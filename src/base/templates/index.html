@@ -21,16 +21,27 @@
         <div class="controls flex">
             <button id="start" class="btn">Start</button>
             <button id="reset" class="btn">Reset</button>
-            <form action="index.html" method="POST">
+            <form action="{% url 'chrono' %}" method="POST">
+                {% csrf_token %}
                 <input type="submit" value="Save" class="btn cursor-pointer">
-                <input type="text" value="00:00:00" id="letter" name="nheca" class="hidden">
+                <input type="text" value="00:00:00" id="letter" name="duration" class="bg-transparent">
             </form>
         </div>
         
         
     </div>
-            
-
+    <table>
+        <tr>
+            <th>id</th>
+            <th>duration</th>
+        </tr>
+    {% for session in sessions %}
+        <tr>
+            <td>{{session.id}}</td>
+            <td>{{session.duration}}</td>
+        </tr>
+    {% endfor %}
+    </table>
     <script src="{% static 'main.js' %}"></script>
 </body>
 </html>
