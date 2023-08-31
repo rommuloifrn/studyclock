@@ -11,7 +11,7 @@
 <body>
     
 
-    <div class="watch bg-slate-400 p-1 w-80 mx-auto flex flex-col">
+    <div class="watch bg-slate-400 p-1 w-max mx-auto flex flex-col">
         
 
         <div class="time">
@@ -24,10 +24,13 @@
             <form action="{% url 'chrono' %}" method="POST">
                 {% csrf_token %}
                 <input type="submit" value="Save" class="btn cursor-pointer">
-                <input type="text" value="00:00:00" id="letter" name="duration" class="bg-transparent">
+                <input type="text" value="00:00:00" id="letter" name="duration" class="bg-transparent hidden">
+                
+        </div>
+        <div>
+            <textarea name="notes" id="" cols="30" rows="10" placeholder=" write your notes here!" class="rounded p-1"></textarea>
             </form>
         </div>
-        
         
     </div>
     <table>
@@ -39,6 +42,7 @@
         <tr>
             <td>{{session.id}}</td>
             <td>{{session.duration}}</td>
+            <td>{{session.notes}}</td>
         </tr>
     {% endfor %}
     </table>

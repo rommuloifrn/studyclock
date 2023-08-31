@@ -562,8 +562,21 @@ video {
   display: table;
 }
 
+.hidden {
+  display: none;
+}
+
+.h-28 {
+  height: 7rem;
+}
+
 .w-80 {
   width: 20rem;
+}
+
+.w-max {
+  width: -moz-max-content;
+  width: max-content;
 }
 
 .cursor-pointer {
@@ -572,6 +585,10 @@ video {
 
 .flex-col {
   flex-direction: column;
+}
+
+.rounded {
+  border-radius: 0.25rem;
 }
 
 .bg-slate-400 {

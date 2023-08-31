@@ -17,7 +17,7 @@ class Chronometer(View):
 
     def post(self, request, *args, **kwargs):
         # request.POST.get('duration')
-        sess = Session(duration=parse_duration(request.POST.get('duration')))
+        sess = Session(duration = parse_duration(request.POST.get('duration')), notes = request.POST.get('notes'))
         sess.save()
         
 
