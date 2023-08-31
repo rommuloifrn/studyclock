@@ -1,15 +1,7 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>me chrono!</title>
 
-    <link rel="stylesheet" href="{% static 'main.css' %}">
-</head>
-<body>
-    
+{% block content %}
 
     <div class="watch bg-slate-400 p-1 w-max mx-auto flex flex-col">
         
@@ -47,5 +39,5 @@
     {% endfor %}
     </table>
     <script src="{% static 'main.js' %}"></script>
-</body>
-</html>
+
+{% endblock content %}

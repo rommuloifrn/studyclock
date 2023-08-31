@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.views import View
+from django.contrib.auth.views import LoginView
 from .models import Session
 
+from django.urls import reverse_lazy
 from django.utils.dateparse import parse_duration
 from django.http import HttpResponseRedirect
 
@@ -22,3 +24,11 @@ class Chronometer(View):
         
 
         return HttpResponseRedirect('')
+
+class Login(LoginView):
+    next_page = '/'
+    redirect_authenticated_user = True
+    fields = '__all__'
+
+    def get_success_url(self):
+        return reverse_lazy('chrono')
