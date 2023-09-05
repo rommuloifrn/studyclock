@@ -5,4 +5,6 @@ urlpatterns = [
     #path('', views.index, name='index'),
     path('', views.Chronometer.as_view(), name='chrono'),
     path('login', views.Login.as_view(), name='login'),
+    path('logout', views.Logout.as_view(), name='logout'),
+    path('register', views.SignUp.as_view(), name='register'),
 ]

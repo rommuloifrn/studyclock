@@ -3,11 +3,10 @@
 {% block content %}
 <article class="">
     <a href="{% url 'chrono' %}">Go back</a>
-    <form action="{% url 'login' %}" method="post">
+    <form action="{% url 'register' %}" method="post">
         {% csrf_token %}
         {{form.as_p}}
         <input type="submit" value="Submit">
     </form>
-    <p>not registered yet? <a href="{% url 'register' %}">sign up</a></p>
 </article>
 {% endblock content %}

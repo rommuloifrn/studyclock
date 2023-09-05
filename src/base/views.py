@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from django.views import View
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
+from django.views.generic import CreateView
+from .forms import RegisterForm
 from .models import Session
 
 from django.urls import reverse_lazy
 from django.utils.dateparse import parse_duration
 from django.http import HttpResponseRedirect
+
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -32,3 +36,12 @@ class Login(LoginView):
 
     def get_success_url(self):
         return reverse_lazy('chrono')
+
+class Logout(LogoutView):
+    next_page = reverse_lazy('chrono')
+
+class SignUp(CreateView):
+    model = User
+    form_class = RegisterForm
+    template_name = 'registration/register.html'
+    success_url = reverse_lazy('chrono')
