@@ -18,15 +18,14 @@ def index(request):
 
 class Chronometer(View):
     def get(self, request, *args, **kwargs):
-        sessions = Session.objects.all()
+        if request.user.is_authenticated:
+            sessions = request.user.session_set.all()
+        else: sessions = 0
         return render(request, 'index.html', {'sessions':sessions})
 
     def post(self, request, *args, **kwargs):
-        # request.POST.get('duration')
-        sess = Session(duration = parse_duration(request.POST.get('duration')), notes = request.POST.get('notes'))
+        sess = Session(duration = parse_duration(request.POST.get('duration')), notes = request.POST.get('notes'), user = request.user)
         sess.save()
-        
-
         return HttpResponseRedirect('')
 
 class Login(LoginView):

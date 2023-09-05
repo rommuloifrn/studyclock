@@ -9,22 +9,25 @@
         <div class="time">
             00:00:00
         </div>
-
         <div class="controls flex">
             <button id="start" class="btn">Start</button>
             <button id="reset" class="btn">Reset</button>
-            <form action="{% url 'chrono' %}" method="POST">
+        <form action="{% url 'chrono' %}" method="POST">
+            
+                {% if request.user.is_authenticated %}
                 {% csrf_token %}
                 <input type="submit" value="Save" class="btn cursor-pointer">
                 <input type="text" value="00:00:00" id="letter" name="duration" class="bg-transparent hidden">
-                
-        </div>
-        <div>
-            <textarea name="notes" id="" cols="30" rows="10" placeholder=" write your notes here!" class="rounded p-1"></textarea>
-            </form>
-        </div>
+                    
+            </div>
+            <div>
+                <textarea name="notes" id="" cols="30" rows="10" placeholder=" write your notes here!" class="rounded p-1"></textarea>
+            </div>
+                {% endif %}
+        </form>
         
     </div>
+    {% if request.user.is_authenticated %}
     <table>
         <tr>
             <th>id</th>
@@ -38,6 +41,7 @@
         </tr>
     {% endfor %}
     </table>
+    {% endif %}
     <script src="{% static 'main.js' %}"></script>
 
 {% endblock content %}
