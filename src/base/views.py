@@ -12,6 +12,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from .forms import RegisterForm
 from .models import Session
 from django.contrib.auth.models import User
+from datetime import timedelta
 
 
 
@@ -20,8 +21,9 @@ def index(request):
 
 class Chronometer(View):
     def get(self, request, *args, **kwargs):
+        # isso aqui está meio gambiarra!
         if request.user.is_authenticated:
-            sessions = request.user.session_set.all()
+            sessions = request.user.session_set.all().order_by('-saved')
         else: sessions = 0
         return render(request, 'index.html', {'sessions':sessions})
 
@@ -29,6 +31,21 @@ class Chronometer(View):
         sess = Session(duration = parse_duration(request.POST.get('duration')), notes = request.POST.get('notes'), user = request.user)
         sess.save()
         return HttpResponseRedirect('')
+
+class DeleteSession(View):
+    def post(self, request, *args, **kwargs):
+        sess = get_object_or_404(Session, pk=kwargs['pk'])
+        if sess.user == request.user and request.user.is_authenticated:
+            sess.delete()
+        return HttpResponseRedirect('/')
+
+class ViewOwnProfile(View):
+    def get(self, request):
+        user = request.user
+        hours = timedelta()
+        for sess in user.session_set.all():
+            hours = hours + sess.duration
+        return render(request, 'profile.html', {'user':user, 'hours': hours})
 
 class Login(LoginView):
     next_page = '/'
@@ -47,9 +64,3 @@ class SignUp(CreateView):
     template_name = 'registration/register.html'
     success_url = reverse_lazy('chrono')
 
-class DeleteSession(View):
-    def post(self, request, *args, **kwargs):
-        sess = get_object_or_404(Session, pk=kwargs['pk'])
-        if sess.user == request.user and request.user.is_authenticated:
-            sess.delete()
-        return HttpResponseRedirect('/')

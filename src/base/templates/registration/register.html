@@ -1,12 +1,36 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block title %}Register{% endblock title %}
+
 {% block content %}
 <article class="">
     <a href="{% url 'chrono' %}">Go back</a>
-    <form action="{% url 'register' %}" method="post">
+
+    <form action="{% url 'register' %}" method="post" class="">
         {% csrf_token %}
         {{form.as_p}}
+        <!--
+        {{ name.errors }}
+        <label for="first_name">name: 
+        <input type="text" id="first_name"></label>
+
+        <label for="username">username: 
+        <input type="text" id="username"></label>
+        {{ email.errors }}
+        <label for="email">email: 
+        <input type="email" id="email"></label>
+        {{ password1.errors }}
+        <label for="password1">password: 
+        <input type="password" id="password1"></label>
+        {{ password2.errors }}
+        <label for="password2">repeat password: 
+        <input type="password" id="password2"></label>
+-->
         <input type="submit" value="Submit">
     </form>
+    <div id="gambiarra" class="hidden">
+        <div class="input"></div>
+    </div>
 </article>
 {% endblock content %}

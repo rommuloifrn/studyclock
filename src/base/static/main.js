@@ -1,16 +1,41 @@
+let notes = 0;
+function toggleN() {
+    if (noteSpace.style.display == "none") {
+        noteSpace.style.display = "flex";
+        notesHeadText.innerText = "close"
+    } else {
+        noteSpace.style.display = "none";
+        notesHeadText.innerText = "write some notes!"
+    }
+    //noteSpace.setAttribute("class", '');
+}
+
+
+
+
+
+
+
+
 // global variables
 const time_el = document.querySelector('.watch .time');
 const start_btn = document.getElementById('start');
 const reset_btn = document.getElementById('reset');
 const input = document.getElementById('letter');
+const noteSpace = document.getElementById('notes');
+const notesHeadText = document.getElementById('notesheadtext');
 
 
 let seconds = 0;
 let interval = null;
 
 // Event listeners
+//notes.addEventListener('click', toggleNotes);
 start_btn.addEventListener('click', start);
 reset_btn.addEventListener('click', reset);
+
+
+
 
 // update the timer
 function timer() {

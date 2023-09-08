@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}StudyClock: Profile{% endblock title %}
+{% block content %}
+
+<div class="bg-nord6 p-10 max-w-screen-sm mx-auto flex flex-col rounded">
+    <h1 class="text-5xl font-semibold">{{user}}</h1>
+    <p>time: {{hours}}</p>
+    <p>joined: {{user.date_joined}}</p>
+    <a href="{% url 'chrono' %}">
+        <div class="btn">Back</div>
+    </a>
+</div>
+{% endblock content %}

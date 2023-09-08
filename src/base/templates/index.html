@@ -1,42 +1,41 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block title %}Chrono{% endblock title %}
 {% block content %}
 
-    <div class="watch bg-slate-400 p-1 w-max mx-auto flex flex-col">
+    <div class="watch bg-nord6 p-10 max-w-screen-sm mx-auto flex flex-col rounded shadow-md">
         
 
-        <div class="time">
+        <div class="time mx-auto text-6xl font-semibold pb-5">
             00:00:00
         </div>
-        <div class="controls flex">
-            <button id="start" class="btn">Start</button>
-            <button id="reset" class="btn">Reset</button>
+        <div class="controls flex mx-auto">
+            <button id="start" class="btn">start</button>
+            <button id="reset" class="btn">reset</button>
         <form action="{% url 'chrono' %}" method="POST">
             
                 {% if request.user.is_authenticated %}
                 {% csrf_token %}
-                <input type="submit" value="Save" class="btn cursor-pointer">
+                <input type="submit" value="save" class="btn cursor-pointer">
                 <input type="text" value="00:00:00" id="letter" name="duration" class="bg-transparent hidden">
                     
             </div>
-            <div>
-                <textarea name="notes" id="" cols="30" rows="10" placeholder=" write your notes here!" class="rounded p-1"></textarea>
+            
+            <div id="notes" class="hidden mx-auto mt-5">
+                <textarea name="notes" id="" cols="40" rows="10" placeholder=" write your notes here!" class="rounded p-1 w-full"></textarea>
             </div>
+            <div id="notesheadtext" class="w-full text-nord3 mx-auto mt-5 border-t-2 border-t-nord4 text-center" onclick="toggleN()">write some notes!</div>
                 {% endif %}
         </form>
-        
     </div>
     {% if request.user.is_authenticated %}
-    <table>
+    <table class="mx-auto">
         <tr>
-            <th>id</th>
             <th>duration</th>
             <th>when</th>
         </tr>
     {% for session in sessions %}
         <tr>
-            <td>{{session.id}}</td>
             <td>{{session.duration}}</td>
             <td>{{session.saved}}</td>
             <td>{{session.notes}}</td>
