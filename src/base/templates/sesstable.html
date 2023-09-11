@@ -1,0 +1,25 @@
+<div class="mx-auto text-center mt-5">
+{% if request.user.is_authenticated %}
+
+    <p class="btn mx-auto" onclick="toggleManually()">Add manually</p>
+    <table class="mx-auto">
+        <tr>
+            <th>duration</th>
+            <th>when</th>
+        </tr>
+    {% for session in sessions %}
+        <tr>
+            <td>{{session.duration}}</td>
+            <td>{{session.saved}}</td>
+            <td>{{session.notes}}</td>
+            <td> 
+                <form action="{% url 'delsession' session.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="delete">
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+</div>

@@ -10,7 +10,15 @@ function toggleN() {
     //noteSpace.setAttribute("class", '');
 }
 
-
+function toggleManually() {
+    if (manuallyBoard.style.display == "none") {
+        manuallyBoard.style.display = "flex";
+        clock.style.display = "none";
+    } else {
+        manuallyBoard.style.display = "none";
+        clock.style.display = "flex";
+    }
+}
 
 
 
@@ -21,6 +29,10 @@ function toggleN() {
 const time_el = document.querySelector('.watch .time');
 const start_btn = document.getElementById('start');
 const reset_btn = document.getElementById('reset');
+
+const manuallyBoard = document.getElementById('manually');
+const clockBoard = document.getElementById('clock');
+
 const input = document.getElementById('letter');
 const noteSpace = document.getElementById('notes');
 const notesHeadText = document.getElementById('notesheadtext');
