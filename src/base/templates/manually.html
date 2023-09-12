@@ -1,12 +1,23 @@
 <div id="manually" class="mainboard hidden">
-    <form action="{% url 'chrono' %}" method="post">
+    <form action="{% url 'man' %}" method="post">
         {% csrf_token %}
-        <input type="submit" value="save" class="btn cursor-pointer">
-        <input type="number" name="hours" max-length="2">
-        
-        <div id="notes" class="hidden mx-auto mt-5">
-        <textarea name="notes" id="" cols="40" rows="10" placeholder=" write your notes here!" class="rounded p-1 w-full"></textarea>
+
+        <div class="flex flex-col justify-center mx-auto text-center">
+            <p class="text-nord4">hh:mm:ss</p>
+
+            <div>
+                <input class="clock-input" placeholder="hh" type="number" name="hours" max="24" size="2" value="00">
+                <input class="clock-input" placeholder="mm" type="number" name="minutes" max="60" size="2" value="00">
+                <input class="clock-input" placeholder="ss" type="number" name="seconds" max="60" size="2" value="00">
+            </div>
+
+            <input type="submit" value="save" class="btn-blue mx-auto mt-5">
         </div>
-        <div id="notesheadtext" class="w-full text-nord3 mx-auto mt-5 border-t-2 border-t-nord4 text-center" onclick="toggleN()">write some notes!</div>
+        
+        
+        <div id="notesman" class="hidden mx-auto mt-5">
+            <textarea name="notes" cols="40" rows="10" placeholder=" write your notes here!" class="rounded p-1 w-full"></textarea>
+        </div>
+        <div id="notesmanheadtext" class="cursor-pointer w-full text-nord3 mx-auto mt-5 border-t-2 border-t-nord4 text-center" onclick="toggleNotesOnManually()">write some notes!</div>
     </form>
 </div>

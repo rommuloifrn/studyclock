@@ -1,24 +1,63 @@
 let notes = 0;
-function toggleN() {
-    if (noteSpace.style.display == "none") {
+let manually = 0;
+
+function toggleNotes() {
+    if (notes == 0) {
         noteSpace.style.display = "flex";
-        notesHeadText.innerText = "close"
+        notesHeadText.innerText = "close";
+        notes = 1;
     } else {
         noteSpace.style.display = "none";
-        notesHeadText.innerText = "write some notes!"
+        notesHeadText.innerText = "write some notes!";
+        notes = 0;
     }
-    //noteSpace.setAttribute("class", '');
 }
 
 function toggleManually() {
-    if (manuallyBoard.style.display == "none") {
+    if (manually == 0) {
         manuallyBoard.style.display = "flex";
-        clock.style.display = "none";
+        clockBoard.style.display = "none";
+        manButton.innerText = "close"
+        manually = 1;
     } else {
         manuallyBoard.style.display = "none";
-        clock.style.display = "flex";
+        clockBoard.style.display = "flex";
+        manButton.innerText = "Add manually"
+        manually = 0;
     }
 }
+
+function toggleNotesOnManually() {
+    if (notes == 0) {
+        manuallyNoteSpace.style.display = "flex";
+        notesManuallyHeadText.innerText = "close";
+        notes = 1;
+    } else {
+        manuallyNoteSpace.style.display = "none";
+        notesManuallyHeadText.innerText = "write some notes!";
+        notes = 0;
+    }
+}
+// function toggleN() {
+//     if (noteSpace.style.display == "none") {
+//         noteSpace.style.display = "flex";
+//         notesHeadText.innerText = "close";
+//     } else {
+//         noteSpace.style.display = "none";
+//         notesHeadText.innerText = "write some notes!";
+//     }
+//     //noteSpace.setAttribute("class", '');
+// }
+
+// function toggleManually() {
+//     if (manuallyBoard.style.display === "none" && clockBoard.style.display == "flex") {
+//         manuallyBoard.style.display = "flex";
+//         clockBoard.style.display = "none";
+//     } else {
+//         manuallyBoard.style.display = "none";
+//         clockBoard.style.display = "flex";
+//     }
+// }
 
 
 
@@ -26,16 +65,20 @@ function toggleManually() {
 
 
 // global variables
-const time_el = document.querySelector('.watch .time');
+const time_el = document.getElementById('display');
 const start_btn = document.getElementById('start');
 const reset_btn = document.getElementById('reset');
 
+const manButton = document.getElementById('manuallybutton');
 const manuallyBoard = document.getElementById('manually');
 const clockBoard = document.getElementById('clock');
 
 const input = document.getElementById('letter');
 const noteSpace = document.getElementById('notes');
 const notesHeadText = document.getElementById('notesheadtext');
+
+const manuallyNoteSpace = document.getElementById('notesman');
+const notesManuallyHeadText = document.getElementById('notesmanheadtext');
 
 
 let seconds = 0;

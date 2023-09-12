@@ -1,7 +1,7 @@
 <div class="mx-auto text-center mt-5">
 {% if request.user.is_authenticated %}
 
-    <p class="btn mx-auto" onclick="toggleManually()">Add manually</p>
+    <p id="manuallybutton" class="btn-blue mx-auto" onclick="toggleManually()">Add manually</p>
     <table class="mx-auto">
         <tr>
             <th>duration</th>

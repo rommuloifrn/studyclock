@@ -47,6 +47,12 @@ class ViewOwnProfile(View):
             hours = hours + sess.duration
         return render(request, 'profile.html', {'user':user, 'hours': hours})
 
+class ManuallyCreateSession(View):
+    def post(self, request, *args, **kwargs):
+        sess = Session(duration = parse_duration(request.POST.get('hours') + ":" + request.POST.get('minutes') + ":" + request.POST.get('seconds')), notes = request.POST.get('notes'), user = request.user)
+        sess.save()
+        return HttpResponseRedirect('/')
+
 class Login(LoginView):
     next_page = '/'
     redirect_authenticated_user = True
