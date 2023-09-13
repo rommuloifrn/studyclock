@@ -5,13 +5,13 @@
         00:00:00
     </div>
     <div class="controls flex mx-auto">
-        <button id="start" class="btn-lil">start</button>
-        <button id="reset" class="btn-lil">reset</button>
+        <button id="start" class="btn-blue">start</button>
+        <button id="reset" class="btn-blue">reset</button>
     <form action="{% url 'chrono' %}" method="POST">
         
             {% if request.user.is_authenticated %}
             {% csrf_token %}
-            <input type="submit" value="save" class="btn-lil">
+            <input type="submit" value="save" class="btn-blue">
             <input type="text" value="00:00:00" id="letter" name="duration" class="bg-transparent hidden">
                 
         </div>

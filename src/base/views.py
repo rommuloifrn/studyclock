@@ -12,7 +12,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from .forms import RegisterForm
 from .models import Session
 from django.contrib.auth.models import User
-from datetime import timedelta, date, datetime
+from datetime import timedelta
 
 
 
@@ -28,7 +28,7 @@ class Chronometer(View):
         return render(request, 'index.html', {'sessions':sessions})
 
     def post(self, request, *args, **kwargs):
-        sess = Session(duration = parse_duration(request.POST.get('duration')), notes = request.POST.get('notes'), user = request.user, saved=timezone.now())
+        sess = Session(duration = parse_duration(request.POST.get('duration')), notes = request.POST.get('notes'), user = request.user)
         sess.save()
         return HttpResponseRedirect('')
 
@@ -49,17 +49,7 @@ class ViewOwnProfile(View):
 
 class ManuallyCreateSession(View):
     def post(self, request, *args, **kwargs):
-        duration = request.POST.get('hours') + ":" + request.POST.get('minutes') + ":" + request.POST.get('seconds')
-        time = request.POST.get('hour')+"-"+request.POST.get('minute')+"-"+request.POST.get('second')
-        date = request.POST.get('date')
-
-        sess = Session(
-            duration = parse_duration(duration), 
-            notes = request.POST.get('notes'),
-            user = request.user,
-            saved=datetime.strptime(date + " " + time, '%Y-%m-%d %H-%M-%S')
-        )
-
+        sess = Session(duration = parse_duration(request.POST.get('hours') + ":" + request.POST.get('minutes') + ":" + request.POST.get('seconds')), notes = request.POST.get('notes'), user = request.user)
         sess.save()
         return HttpResponseRedirect('/')
 

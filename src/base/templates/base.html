@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %}</title>
     <link rel="stylesheet" href="{% static 'main.css' %}">
-    <style> a {max-height: min-content;} </style>
 </head>
 <body class="container mx-auto text-2xl bg-nord4">
     <header class="flex justify-between mt-5">
@@ -22,7 +21,7 @@
                 Welcome,&nbsp<a href="{% url 'profile' %}" class="h-min hover:text-nord3 font-semibold">{{request.user}}</a>!
             </div>
             
-            <a href="{% url 'logout' %}" class="text-nord10 hover:text-nord3 font-semibold">Logout</a>
+            <a href="{% url 'logout' %}" class="text-nord10 hover:text-nord3">Logout</a>
             {% else %}
             <a href="{% url 'login' %}">Login or sign up</a>
             {% endif %}
