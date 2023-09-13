@@ -13,8 +13,17 @@
     }
 
     .btn-blue {
-        @apply p-1 px-3 mx-1 bg-nord8 text-nord6 rounded hover:bg-nord9 w-max transition cursor-pointer;
+        @apply p-1 px-3 mx-1 h-10 bg-nord8 text-nord6 rounded hover:bg-nord9 w-max transition cursor-pointer;
     }
+
+    .btn-lil {
+        @apply p-1 px-3 mx-1 h-10 bg-nord15 text-nord6 rounded hover:bg-nord10 w-max transition cursor-pointer;
+    }
+
+    .btn-discrete {
+        @apply p-1 px-3 mx-1 h-10 text-nord3 rounded hover:bg-nord4 w-max transition cursor-pointer;
+    }
+
 
     .input {
         @apply border  rounded;

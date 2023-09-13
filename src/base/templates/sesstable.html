@@ -1,25 +1,35 @@
-<div class="mx-auto text-center mt-5">
+<div class="mx-auto text-center mt-5 container flex justify-center flex-col items-center w-min">
 {% if request.user.is_authenticated %}
 
-    <p id="manuallybutton" class="btn-blue mx-auto" onclick="toggleManually()">Add manually</p>
-    <table class="mx-auto">
-        <tr>
-            <th>duration</th>
-            <th>when</th>
-        </tr>
+    <div class="flex justify-end w-full">
+        <p id="manuallybutton" class="btn-blue mb-5" onclick="toggleManually()">Add manually</p>        
+    </div>
+    
+    
     {% for session in sessions %}
-        <tr>
-            <td>{{session.duration}}</td>
-            <td>{{session.saved}}</td>
-            <td>{{session.notes}}</td>
-            <td> 
-                <form action="{% url 'delsession' session.id %}" method="post">
-                    {% csrf_token %}
-                    <input type="submit" value="delete">
-                </form>
-            </td>
-        </tr>
+    <div class="bg-nord5 rounded m-1 p-2 flex max-w-screen-sm">
+        <div class="w-96 flex flex-col text-left pl-2">
+            <span class="text-nord3 font-semibold text-base">
+                {{session.saved}}
+            </span> <br>
+            
+            <span class="font-bold text-nord0">
+                {{session.duration}}
+            </span>
+        </div>
+        <div class="w-96 flex justify-end items-center">
+            <div class="btn-discrete">
+                notes
+            </div>
+            <form action="{% url 'delsession' session.id %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="delete" class="btn-discrete">
+            </form>
+
+        </div>
+        
+    </div>
+            
     {% endfor %}
-    </table>
     {% endif %}
 </div>
