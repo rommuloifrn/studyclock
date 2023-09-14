@@ -49,8 +49,18 @@ class ViewOwnProfile(View):
 
 class ManuallyCreateSession(View):
     def post(self, request, *args, **kwargs):
-        sess = Session(duration = parse_duration(request.POST.get('hours') + ":" + request.POST.get('minutes') + ":" + request.POST.get('seconds')), notes = request.POST.get('notes'), user = request.user)
-        sess.save()
+        duration = request.POST.get('hours') + ":" + request.POST.get('minutes') + ":" + request.POST.get('seconds')
+        time = request.POST.get('hour')+"-"+request.POST.get('minute')+"-"+request.POST.get('second')
+        date = request.POST.get('date')
+
+        sess = Session(
+            duration = parse_duration(duration), 
+            notes = request.POST.get('notes'),
+            user = request.user,
+            saved=datetime.strptime(date + " " + time, '%Y-%m-%d %H-%M-%S')
+        )
+
+        sess.save() 
         return HttpResponseRedirect('/')
 
 class Login(LoginView):
