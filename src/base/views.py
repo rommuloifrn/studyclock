@@ -12,7 +12,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from .forms import RegisterForm
 from .models import Session
 from django.contrib.auth.models import User
-from datetime import timedelta
+from datetime import timedelta, date, datetime, timezone
 
 
 
@@ -28,7 +28,7 @@ class Chronometer(View):
         return render(request, 'index.html', {'sessions':sessions})
 
     def post(self, request, *args, **kwargs):
-        sess = Session(duration = parse_duration(request.POST.get('duration')), notes = request.POST.get('notes'), user = request.user)
+        sess = Session(duration = parse_duration(request.POST.get('duration')), notes = request.POST.get('notes'), user = request.user, saved=datetime.now())
         sess.save()
         return HttpResponseRedirect('')
 
@@ -60,7 +60,7 @@ class ManuallyCreateSession(View):
             saved=datetime.strptime(date + " " + time, '%Y-%m-%d %H-%M-%S')
         )
 
-        sess.save() 
+        sess.save()
         return HttpResponseRedirect('/')
 
 class Login(LoginView):

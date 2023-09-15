@@ -3,7 +3,7 @@
         {% csrf_token %}
 
         <div class="flex flex-col justify-center mx-auto text-center">
-            <p class="text-nord4">hh:mm:ss</p>
+            <p class="text-nord4">duration (hh:mm:ss)</p>
 
             <div>
                 <input class="clock-input" placeholder="hh" type="number" name="hours" max="24" size="2" value="00">
@@ -11,7 +11,7 @@
                 <input class="clock-input" placeholder="ss" type="number" name="seconds" max="60" size="2" value="00">
             </div>
             <p class="text-nord4">date</p>
-            <input type="date" name="date" required> 
+            <input type="date" name="date" required>
             <p class="text-nord4">time saved</p>
             <div>
                 <input class="clock-input" placeholder="hh" type="number" name="hour" max="24" size="2" value="00">
