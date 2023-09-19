@@ -1,32 +1,47 @@
-<div class="mx-auto text-center mt-5 container flex justify-center flex-col items-center w-min">
+<div class="mx-auto text-center mt-5 container flex justify-center flex-col items-center">
 {% if request.user.is_authenticated %}
 
-    <div class="flex justify-end w-full">
-        <p id="manuallybutton" class="btn-blue mb-5" onclick="toggleManually()">Add manually</p>        
+    <div class="flex justify-end w-full max-w-screen-sm">
+        <p id="manuallybutton" class="btn-blue m-0 mb-5" onclick="toggleManually()">add manually</p>        
     </div>
     
     
     {% for session in sessions %}
-    <div class="bg-nord5 rounded m-1 p-2 flex max-w-screen-sm">
-        <div class="w-96 flex flex-col text-left pl-2">
-            <span class="text-nord3 font-semibold text-base">
-                {{session.saved}}
-            </span> <br>
-            
-            <span class="font-bold text-nord0">
-                {{session.duration}}
-            </span>
-        </div>
-        <div class="w-96 flex justify-end items-center">
-            <div class="btn-discrete">
-                notes
-            </div>
-            <form action="{% url 'delsession' session.id %}" method="post">
-                {% csrf_token %}
-                <input type="submit" value="delete" class="btn-discrete">
-            </form>
+    <div class="bg-nord5 dark:bg-nord1 rounded m-1 p-2 flex flex-col justify-between w-full max-w-screen-sm ">
 
-        </div>
+            {% comment %} informações e botões {% endcomment %}
+            <div class="flex justify-between">
+                <div class="flex flex-col text-left pl-2">
+                    <span class="text-nord3 dark:text-nord4 font-semibold text-base">
+                        {{session.saved}}
+                    </span> <br>
+                    
+                    <span class="font-bold text-nord0 dark:text-nord5">
+                        {{session.duration}}
+                    </span>
+                </div>
+                <div class=" flex justify-end items-center">
+                    <div class="btn-discrete btn-table" onclick="toggleSessionTableNotes({{session.id}})">
+                        notes
+                    </div>
+                    <form action="{% url 'delsession' session.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="delete" class="btn-discrete btn-table">
+                    </form>
+                </div>
+            </div>
+            {% comment %} notas (quando visiveis) {% endcomment %}
+            <div id="sess{{session.id}}notes" class="hidden" >
+                {% if session.notes %}
+                <div class="text-nord-4">
+                    {{session.notes}}
+                </div>
+                
+                {% else %}
+                <span class="text-nord4 dark:text-nord3 mb-2">No notes!</span>
+                {% endif %}
+            </div>
+        
         
     </div>
             

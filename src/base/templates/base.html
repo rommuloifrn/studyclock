@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock title %}</title>
+    <title id="pagetitle">{% block title %}{% endblock title %}</title>
     <link rel="stylesheet" href="{% static 'main.css' %}">
     <style> a {max-height: min-content;} </style>
 </head>
-<body class="container mx-auto text-2xl bg-nord4">
+<body class="container mx-auto text-2xl text-nord0 bg-nord4 dark:text-nord6 dark:bg-nord0">
     <header class="flex justify-between mt-5">
         <a href="/" class="h-min">
             <div class="font-bold mini-link">StudyLog</div>
@@ -19,10 +19,10 @@
         <div class="w-max flex flex-col text-right">
             {% if request.user.is_authenticated %}
             <div>
-                Welcome,&nbsp<a href="{% url 'profile' %}" class="h-min hover:text-nord3 font-semibold">{{request.user}}</a>!
+                Welcome,&nbsp<a href="{% url 'profile' %}" class="h-min mini-link font-semibold hover:text-nord13">{{request.user}}</a>!
             </div>
             
-            <a href="{% url 'logout' %}" class="text-nord10 hover:text-nord3 font-semibold">Logout</a>
+            <a href="{% url 'logout' %}" class="text-nord10 dark:text-nord7 hover:text-nord3 dark:hover:text-nord9 font-semibold">Logout</a>
             {% else %}
             <a href="{% url 'login' %}">Login or sign up</a>
             {% endif %}

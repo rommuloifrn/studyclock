@@ -38,41 +38,34 @@ function toggleNotesOnManually() {
         notes = 0;
     }
 }
-// function toggleN() {
-//     if (noteSpace.style.display == "none") {
-//         noteSpace.style.display = "flex";
-//         notesHeadText.innerText = "close";
-//     } else {
-//         noteSpace.style.display = "none";
-//         notesHeadText.innerText = "write some notes!";
-//     }
-//     //noteSpace.setAttribute("class", '');
-// }
 
-// function toggleManually() {
-//     if (manuallyBoard.style.display === "none" && clockBoard.style.display == "flex") {
-//         manuallyBoard.style.display = "flex";
-//         clockBoard.style.display = "none";
-//     } else {
-//         manuallyBoard.style.display = "none";
-//         clockBoard.style.display = "flex";
-//     }
-// }
+function toggleSessionTableNotes(sessionId) {
+    sess = document.getElementById("sess" + sessionId + "notes");
+    if (sess.getAttribute("class") == "hidden") {
+        sess.setAttribute("class", "");
+    } else {
+        sess.setAttribute("class", "hidden");
+    }
+}
 
 
 
 
 
 
-// global variables
+// stopwatch
 const time_el = document.getElementById('display');
 const start_btn = document.getElementById('start');
 const reset_btn = document.getElementById('reset');
+let seconds = 0;
+let interval = null;
 
+const pageTitle = document.getElementById("pagetitle");
+// toggle manual session insertion
 const manButton = document.getElementById('manuallybutton');
 const manuallyBoard = document.getElementById('manually');
 const clockBoard = document.getElementById('clock');
-
+// toggle session
 const input = document.getElementById('letter');
 const noteSpace = document.getElementById('notes');
 const notesHeadText = document.getElementById('notesheadtext');
@@ -81,13 +74,15 @@ const manuallyNoteSpace = document.getElementById('notesman');
 const notesManuallyHeadText = document.getElementById('notesmanheadtext');
 
 
-let seconds = 0;
-let interval = null;
+
 
 // Event listeners
 //notes.addEventListener('click', toggleNotes);
 start_btn.addEventListener('click', start);
 reset_btn.addEventListener('click', reset);
+
+
+
 
 
 
@@ -107,6 +102,7 @@ function timer() {
 
     
     time_el.innerText = `${hours}:${mins}:${secs}`;
+    pageTitle.innerText = `Chrono (${hours}:${mins}:${secs})` ;
     input.setAttribute('value', `${hours}:${mins}:${secs}`);
 }
 
@@ -132,5 +128,6 @@ function reset() {
     stop();
     seconds = 0;
     time_el.innerText = '00:00:00';
+    pageTitle.innerText = `Chrono (${hours}:${mins}:${secs})`;
     input.setAttribute("value", '00:00:00');
 }

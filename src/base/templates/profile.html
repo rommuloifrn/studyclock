@@ -4,10 +4,15 @@
 {% block title %}StudyClock: Profile{% endblock title %}
 {% block content %}
 
-<div class="bg-nord6 p-10 max-w-screen-sm mx-auto flex flex-col rounded">
+<div class="mainboard">
     <h1 class="text-5xl font-semibold mb-5">{{user}}</h1>
-    <p>time: {{hours}}</p>
-    <p>joined: {{user.date_joined}}</p>
+    <p>
+        <span class="font-semibold">time:</span> <span class="text-nord15 font-bold">{{hours}}</span>
+    </p>
+    <p>
+        <span class="font-semibold">joined:</span> {{user.date_joined}}
+    </p>
+
     <a class="h-min w-min mt-5" href="{% url 'chrono' %}">
         <div class="btn-blue">Back</div>
     </a>
