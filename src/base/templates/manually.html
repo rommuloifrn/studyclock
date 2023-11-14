@@ -6,17 +6,17 @@
             <p class="text-nord4">duration (hh:mm:ss)</p>
 
             <div>
-                <input class="clock-input" placeholder="hh" type="number" name="hours" max="24" size="2" value="00">
-                <input class="clock-input" placeholder="mm" type="number" name="minutes" max="60" size="2" value="00">
-                <input class="clock-input" placeholder="ss" type="number" name="seconds" max="60" size="2" value="00">
+                <input class="clock-input dark:bg-nord0" placeholder="hh" type="number" name="hours" max="24" size="2" value="00">
+                <input class="clock-input dark:bg-nord0" placeholder="mm" type="number" name="minutes" max="60" size="2" value="00">
+                <input class="clock-input dark:bg-nord0" placeholder="ss" type="number" name="seconds" max="60" size="2" value="00">
             </div>
             <p class="text-nord4">date</p>
-            <input type="date" name="date" required>
+            <input class="dark:bg-nord0" type="date" name="date" required>
             <p class="text-nord4">time saved</p>
             <div>
-                <input class="clock-input" placeholder="hh" type="number" name="hour" max="24" size="2" value="00">
-                <input class="clock-input" placeholder="mm" type="number" name="minute" max="60" size="2" value="00">
-                <input class="clock-input" placeholder="ss" type="number" name="second" max="60" size="2" value="00">
+                <input class="clock-input dark:bg-nord0" placeholder="hh" type="number" name="hour" max="24" size="2" value="00">
+                <input class="clock-input dark:bg-nord0" placeholder="mm" type="number" name="minute" max="60" size="2" value="00">
+                <input class="clock-input dark:bg-nord0" placeholder="ss" type="number" name="second" max="60" size="2" value="00">
             </div>
 
             <input type="submit" value="save" class="btn-blue mx-auto mt-5">
@@ -24,8 +24,8 @@
         
         
         <div id="notesman" class="hidden mx-auto mt-5">
-            <textarea name="notes" cols="40" rows="10" placeholder=" write your notes here!" class="rounded p-1 w-full"></textarea>
+            <textarea name="notes" cols="40" rows="10" placeholder=" write your notes here!" class="rounded p-1 w-full dark:bg-nord0 focus:border-0"></textarea>
         </div>
-        <div id="notesmanheadtext" class="cursor-pointer w-full text-nord3 mx-auto mt-5 border-t-2 border-t-nord4 text-center" onclick="toggleNotesOnManually()">write some notes!</div>
+        <div id="notesmanheadtext" class="cursor-pointer w-full mx-auto mt-5 border-t-2 border-t-nord4 dark:border-t-nord3 text-center" onclick="toggleNotesOnManually()">write some notes!</div>
     </form>
 </div>
