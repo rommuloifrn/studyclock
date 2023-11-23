@@ -37,7 +37,7 @@
 
 
     .input {
-        @apply border  rounded;
+        @apply border border-nord3 rounded dark:bg-nord1;
     }
 
     .clock-input {

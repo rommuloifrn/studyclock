@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.3.3 | MIT License | https://tailwindcss.com
+! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -712,6 +712,15 @@ video {
 .input {
   border-radius: 0.25rem;
   border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(76 86 106 / var(--tw-border-opacity));
+}
+
+@media (prefers-color-scheme: dark) {
+  .input {
+    --tw-bg-opacity: 1;
+    background-color: rgb(59 66 82 / var(--tw-bg-opacity));
+  }
 }
 
 .clock-input {

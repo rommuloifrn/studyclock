@@ -1,3 +1,8 @@
+
+
+
+
+
 let notes = 0;
 let manually = 0;
 
@@ -117,6 +122,11 @@ function start () {
 
     interval = setInterval(timer, 1000);
     start_btn.innerText = 'stop';
+
+    window.addEventListener('beforeunload', function (e) {
+        e.preventDefault();
+        e.returnValue = 'aaaaaaa';
+    });
 }
 
 function stop () {
@@ -131,3 +141,5 @@ function reset() {
     pageTitle.innerText = `Chrono (${hours}:${mins}:${secs})`;
     input.setAttribute("value", '00:00:00');
 }
+
+

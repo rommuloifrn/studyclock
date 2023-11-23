@@ -1,8 +1,5 @@
 
-window.addEventListener('beforeunload', function (e) {
-    e.preventDefault();
-    e.returnValue = 'aaaaaaa';
-});
+
 
 /*
 window.addEventListener('beforeunload', function (e) {
