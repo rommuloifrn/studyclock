@@ -111,6 +111,11 @@ function timer() {
     input.setAttribute('value', `${hours}:${mins}:${secs}`);
 }
 
+closingListener = function (e) {
+    e.preventDefault();
+    e.returnValue = 'aaaaaaa';
+}
+
 function start () {
     if (interval) {
         //return
@@ -123,10 +128,7 @@ function start () {
     interval = setInterval(timer, 1000);
     start_btn.innerText = 'stop';
 
-    window.addEventListener('beforeunload', function (e) {
-        e.preventDefault();
-        e.returnValue = 'aaaaaaa';
-    });
+    window.addEventListener('beforeunload', closingListener);
 }
 
 function stop () {
@@ -134,11 +136,16 @@ function stop () {
     interval = null;
 }
 
+function save () {
+    window.removeEventListener('beforeunload', closingListener);
+}
+
 function reset() {
+    window.removeEventListener('beforeunload', closingListener);
     stop();
     seconds = 0;
     time_el.innerText = '00:00:00';
-    pageTitle.innerText = `Chrono (${hours}:${mins}:${secs})`;
+    pageTitle.innerText = 'Chrono' ;
     input.setAttribute("value", '00:00:00');
 }
 
