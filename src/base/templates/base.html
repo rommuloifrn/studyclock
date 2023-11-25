@@ -19,7 +19,7 @@
         <div class="w-max flex flex-col text-right">
             {% if request.user.is_authenticated %}
             <div>
-                Welcome,&nbsp<a href="{% url 'profile' %}" class="h-min mini-link font-semibold hover:text-nord13">{{request.user}}</a>!
+                Welcome,&nbsp<a href="{% url 'profile' %}" class="h-min mini-link font-semibold hover:text-nord13">{{request.user}}</a> {{hours}} hjours today!!
             </div>
             
             <a href="{% url 'logout' %}" class="text-nord10 dark:text-nord7 hover:text-nord3 dark:hover:text-nord9 font-semibold">Logout</a>
