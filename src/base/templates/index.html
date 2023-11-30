@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Chrono{% endblock title %}
+{% block title %}StudyClock{% endblock title %}
 {% block content %}
 
     {% include 'clock.html' %}
@@ -9,7 +9,8 @@
     
     {% include 'sesstable.html' %}
 
-    <script src="{% static 'main.js' %}"></script>
-    <script src="{% static 'closingprevention.js' %}"></script>
+    <script src="{% static 'js/timer.js' %}"></script>
+    <script src="{% static 'js/toggles.js' %}"></script>
+    <script src="{% static 'js/closingprevention.js' %}"></script>
 
 {% endblock content %}
