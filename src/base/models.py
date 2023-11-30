@@ -5,7 +5,7 @@ import datetime
 
 # Create your models here.
 
-class StudyClockTools():
+class Util():
     def user_today_hours(user):
         sessions = user.session_set.all().order_by('-saved')
         hours = datetime.timedelta()

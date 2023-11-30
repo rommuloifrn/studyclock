@@ -9,6 +9,9 @@ dist/
 !index.html
 **/src/tailwind.2.config.js
 
+## Intellij
+.idea/
+
 ### Django ###
 *.log
 *.pot

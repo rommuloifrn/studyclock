@@ -10,7 +10,7 @@ from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView, LogoutView
 
 from .forms import RegisterForm
-from .models import Session, StudyClockTools
+from .models import Session, Util
 from django.contrib.auth.models import User
 from datetime import timedelta, date, datetime, timezone
 
@@ -24,7 +24,7 @@ class Chronometer(View):
         # isso aqui está meio gambiarra!
         if request.user.is_authenticated:
             sessions = request.user.session_set.all().order_by('-saved')
-            today_hours = StudyClockTools.user_today_hours(request.user)
+            today_hours = Util.user_today_hours(request.user)
         else: 
             sessions = 0
             today_hours = 0
